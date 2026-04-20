@@ -35,7 +35,7 @@ while -i x 1000 -l , add x 1 , print -i x
 
 **Custom Functions**
 
-```
+```python
 func teste
   print hello
 end
