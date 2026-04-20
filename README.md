@@ -8,8 +8,17 @@ The features are:
 **Command System**
 
 execute builtin and system commands.
-```sh
-print hello
+
+```md
+**print** hello
 ls
-cd
+cd folder
+```
+
+**Variables**
+
+create and manipulate variables.
+
+```
+let x 100
 ```
