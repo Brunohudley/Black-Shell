@@ -29,9 +29,18 @@ print -i x
 
 basic loop support
 
-```
+```c
 while -i x 1000 -l , add x 1 , print -i x
 ```
 
 **Custom Functions**
+
+```
+func teste
+  print hello
+end
+ 
+teste
+> hello
+```
 
