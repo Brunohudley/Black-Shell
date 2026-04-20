@@ -13,6 +13,7 @@ ls
 cd folder
 ```
 
+
 **Variables**
 create and manipulate variables.
 ``` js
@@ -20,6 +21,7 @@ let -i x 100
 add -i x 5
 print -i x
 ```
+
 
 **Loops**
 basic loop support
@@ -39,8 +41,10 @@ teste
 > hello
 ```
 
+
 **Config File Support**
 load configuration file in ``shell.cfg``
+
 
 **scripting files**
 load commands using
