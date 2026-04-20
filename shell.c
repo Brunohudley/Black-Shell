@@ -4,7 +4,6 @@
 #include "cfgfile.h"
 #include "pcolors.h"
 
-
 void setup_prompt()
 {
 	char *user;
@@ -16,7 +15,7 @@ void setup_prompt()
 		user = getenv("USER");
     #endif
 
-	printf(BOLD_BLUE "┌──" RESET "[" BOLD_GREEN "%s" RESET "]" RESET "\n",user);
+	printf(BOLD_BLUE "┌──" RESET "[" BOLD_GREEN "%s" RESET "]" BOLD_CYAN "{%d}" RESET "\n",user,errorset.error);
 	printf(BOLD_BLUE "└─" BOLD_GREEN "❯ " RESET);
 }
 
@@ -25,6 +24,8 @@ void sh_loop(void)
 	char *lines; //command
 	char **args; //arguments in command
 	int status;
+
+	errorset.error = 0;
 
 	do
 	{

@@ -4,17 +4,6 @@
 #include "cfgfile.h"
 #include "parser.h"
 
-#ifdef _WIN32
-char *(*pcwd)(char *, int) = _getcwd;
-#else
-char *(*pcwd)(char *, size_t) = getcwd;
-#endif
-
-
-s_func *func_s = NULL;
-int func_cx = 0;
-int func_capacity = 0;
-
 static cmd_help cmds_help[] = {
     {"cd", "change dir"},
     {"pwd", "show working dir"},

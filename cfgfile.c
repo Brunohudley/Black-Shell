@@ -2,8 +2,6 @@
 
 #define READ_CFG_MAX 1024
 
-Program_config cfgProgram;
-
 cfgEntry configtable[] =
     {
         {&cfgProgram.maxloop_reach, "MAXLOOP_REACH:", INTEGER},

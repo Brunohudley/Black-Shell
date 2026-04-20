@@ -25,6 +25,7 @@ typedef struct
 
 extern s_func *func_s;
 extern int func_cx;
+extern int func_capacity;
 
 int unix_proc(char **args);
 int win_proc(char **args);

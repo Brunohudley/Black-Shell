@@ -1,4 +1,5 @@
 #include "utils.h"
+#include "shell.h"
 
 int func_win_perm(LPCSTR filepath,DWORD perms)
 {
@@ -292,5 +293,6 @@ int uget_uname(
 int error_set(char *msg)
 {
     fprintf(stderr,"shell: %s",msg);
+    errorset.error = 1;
     return -1;
 }

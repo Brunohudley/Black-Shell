@@ -3,6 +3,7 @@
 #include "interpreter.h"
 #include "commands.h"
 #include "utils.h"
+#include "shell.h"
 
 #define MAX_BUFFSIZE 1024
 #define TOK_BUFFSIZE 64
@@ -91,7 +92,9 @@ char **sh_splitLine(char *line)
 
 int sh_execute(char **args)
 {
-	if (args[0] == NULL)
+	int ret = 1;
+
+	if (!args[0])
 	{
 		return 1;
 	}
@@ -100,31 +103,39 @@ int sh_execute(char **args)
 	{
 		if (strcmp(args[0], builtin_str[i]) == 0)
 		{
-			return builtin_func[i](args);
+			ret = builtin_func[i](args);
+			errorset.error = (ret != 1);
+			return ret;
 		}
-	}
-	if (exec_fun(args[0]))
-	{
-		return 1;
 	}
 
 	if (strcmp(args[0], "func") == 0)
 	{
-		return sh_fundef(args);
+		ret = sh_fundef(args);
+		errorset.error = (ret != 1);
+		return ret;
+	}
+
+	ret = exec_fun(args[0]);
+	if (ret)
+	{
+		errorset.error = (ret != 1);
+		return ret;
 	}
 
 #ifdef _WIN32
-	if (win_proc(args) != 1)
-	{
-		return error_set("Cannot Execute Command!\n");
-	}
+	ret = win_proc(args);
 #else
-	if (unix_proc(args) != 1)
+	ret = unix_proc(args);
+#endif
+
+	if (ret != 1)
 	{
 		return error_set("Cannot Execute Command!\n");
 	}
-#endif
-	return 1;
+
+	errorset.error = 0;
+	return ret;
 }
 
 char *builtin_str[] =

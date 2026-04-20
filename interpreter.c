@@ -6,10 +6,6 @@
 
 #define LOOP_EXEC_ARG 64
 
-Var vars[MAXVAR];
-int var_count = 0;
-int cmp_flag = 0;
-
 /*
 ==========
 
