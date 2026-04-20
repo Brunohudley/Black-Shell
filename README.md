@@ -19,6 +19,19 @@ cd folder
 
 create and manipulate variables.
 
-``` python
-let x 100
+``` js
+let -i x 100
+add -i x 5
+print -i x
 ```
+
+**Loops**
+
+basic loop support
+
+```
+while -i x 1000 -l , add x 1 , print -i x
+```
+
+**Custom Functions**
+
