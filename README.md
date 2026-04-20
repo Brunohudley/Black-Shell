@@ -6,9 +6,7 @@ integrated,error controling, interpreter structure.
 The features are:
 
 **Command System**
-
 execute builtin and system commands.
-
 ```python
 print hello
 ls
@@ -16,9 +14,7 @@ cd folder
 ```
 
 **Variables**
-
 create and manipulate variables.
-
 ``` js
 let -i x 100
 add -i x 5
@@ -26,7 +22,6 @@ print -i x
 ```
 
 **Loops**
-
 basic loop support
 
 ```c
@@ -34,7 +29,7 @@ while -i x 1000 -l , add x 1 , print -i x
 ```
 
 **Custom Functions**
-
+create functions and use it.
 ```python
 func teste
   print hello
@@ -44,3 +39,11 @@ teste
 > hello
 ```
 
+**Config File Support**
+load configuration file in ``shell.cfg``
+
+**scripting files**
+load commands using
+```python
+source file
+```
