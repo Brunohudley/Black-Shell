@@ -177,9 +177,9 @@ gcc commands.c main.c parser.c shell.c utils.c interpreter.c cfgfile.c -o shell
 
 ## 🧠 Highlights
 
--   Built from scratch in C\
--   Custom tokenizer and interpreter\
--   Integrated scripting language\
+-   Built from scratch in C
+-   Custom tokenizer and interpreter
+-   Integrated scripting language
 -   Cross-platform (Windows / Unix)
 
 ------------------------------------------------------------------------
