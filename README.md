@@ -19,6 +19,6 @@ cd folder
 
 create and manipulate variables.
 
-```
+``` python
 let x 100
 ```
