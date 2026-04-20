@@ -9,8 +9,8 @@ The features are:
 
 execute builtin and system commands.
 
-```md
-**print** hello
+```python
+print hello
 ls
 cd folder
 ```
