@@ -5,7 +5,7 @@ integrated,error controling, interpreter structure.
 ## Features 💡
 The features are:
 
-**Command System**
+**Command System**\
 execute builtin and system commands.
 ```python
 print hello
@@ -14,7 +14,7 @@ cd folder
 ```
 
 
-**Variables**
+**Variables**\
 create and manipulate variables.
 ``` js
 let -i x 100
@@ -23,14 +23,14 @@ print -i x
 ```
 
 
-**Loops**
+**Loops**\
 basic loop support
 
 ```c
 while -i x 1000 -l , add x 1 , print -i x
 ```
 
-**Custom Functions**
+**Custom Functions**\
 create functions and use it.
 ```python
 func teste
@@ -42,11 +42,11 @@ teste
 ```
 
 
-**Config File Support**
+**Config File Support**\
 load configuration file in ``shell.cfg``
 
 
-**Scripting Files**
+**Scripting Files**\
 load commands using
 ```python
 source file
