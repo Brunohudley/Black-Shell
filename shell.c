@@ -16,7 +16,7 @@ void setup_prompt()
 		user = getenv("USER");
     #endif
 
-	printf(BOLD_BLUE "┌──" RESET "[" BOLD_GREEN "@UserUndefined" RESET "]" RESET "\n");
+	printf(BOLD_BLUE "┌──" RESET "[" BOLD_GREEN "%s" RESET "]" RESET "\n",user);
 	printf(BOLD_BLUE "└─" BOLD_GREEN "❯ " RESET);
 }
 
