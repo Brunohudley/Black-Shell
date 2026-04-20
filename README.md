@@ -46,8 +46,15 @@ teste
 load configuration file in ``shell.cfg``
 
 
-**scripting files**
+**Scripting Files**
 load commands using
 ```python
 source file
+```
+
+**Syled Prompt**
+it has an styled prompt
+```
+┌──[User]{0}
+└─❯
 ```
