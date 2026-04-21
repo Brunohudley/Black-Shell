@@ -3,19 +3,18 @@
 #include "includes.h"
 #include "interpreter.h"
 
-typedef struct cfgEntry 
+typedef struct cfgEntry
 {
-    void *ptr;
-    char *key;
-    DataType data_type;
-}cfgEntry;
+  void *ptr;
+  char *key;
+  t_data_type data_type;
+} cfgEntry;
 
 typedef struct
 {
-    int maxloop_reach;
-    char *username;
-}Program_config;
+  size_t maxloop_reach;
+} Program_config;
 
 extern Program_config cfgProgram;
 
-int read_cfg(char *cfg_path);
+int read_cfg (char *cfg_path);

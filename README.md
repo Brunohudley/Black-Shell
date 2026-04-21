@@ -1,189 +1,73 @@
 # BlackShell 🐚
 
-> A custom shell written in C with its own scripting language, built-in
+> A custom shell written in C with its own scripting language, built-in\
 > commands, and interpreter-based execution.
 
-------------------------------------------------------------------------
+## Features 💫 
 
-## 🚀 Example
+> Lexer.\
+> Parser.\
+> Executor.
 
-``` bash
-let -i x 5
-while -i x 0 -g , print -i x , sub x 1
-```
+> Variables handling.\
+> Loops.\
+> Logic statements.\
+> Builtins.\
+> Process execution. 
 
-------------------------------------------------------------------------
+## builtins 🛠️
+> These ate the builtins 
 
-## ✨ Features
+``cd`` `` Change dir``\
+``pwd`` ``Show working dir``\
+``ls`` ``List files and directories in a directory``\
+``chown`` ``Chance group | user permission``\
+``chmod`` ``Chance permissions``\
+``print`` ``Show input``\
+``clear`` ``Clear screen``\
+``nm`` ``Name file``\
+``rm`` ``Remove file``\
+``rmdir`` ``Remove directory``\
+``nf`` ``Create file``\
+``mkdir`` ``Create directory``\
+``df`` ``Show disk properties``\
+``whoami`` ``Show user name``\
+``uname`` ``Show hardware and OS info``\
+``head`` ``Show file content``\
+``source`` ``execute script files (no need for extension)``\
+``exit`` ``Exit shell``
 
-### 🔹 Command System
+> These are scripting builtins
 
-Execute built-in and system commands:
+``let`` ``Create variable``\
+``add`` ``Add the value of var2 into var1``\
+``sub`` ``Sub the value of var2 into var1``\
+``div`` ``Div the value of var2 into var1``\
+``mul`` ``Mul the value of var2 into var1``\
+``cmp`` ``Compare var1 with var2``\
+``do`` ``Do command based on expression and result of cmp``\
+``while`` ``While loop``
 
-``` bash
-print hello
-ls
-cd folder
-```
+> The Error Type
 
-### 🔹 Variables
+``This shell can show errors in the multi prompt``\
+``{0}`` ``OK``\
+``{1}`` ``ERROR``
 
-Create and manipulate variables:
+## flags 🚩
+> Variables Related
 
-``` bash
-let -i x 100
-add -i x 5
-print -i x
-```
+``-i`` ``INTEGER``\
+``-s`` ``STRING``\
+``-f`` ``FLOAT``
 
-### 🔹 Loops
+``Example: let -i x 100``
 
-Basic loop support:
+> Condition Related
 
-``` bash
-while -i x 1000 -l , add x 1 , print -i x
-```
-
-### 🔹 Custom Functions
-
-Define and execute functions:
-
-``` bash
-func teste
-  print hello
-end
-
-teste
-# output:
-hello
-```
-
-### 🔹 Config File Support
-
-Automatically loads configuration from:
-
-``` bash
-shell.cfg
-```
-
-### 🔹 Scripting
-
-Run commands from files:
-
-``` bash
-source file
-```
-
-### 🔹 Styled Prompt
-
-    ┌──[User]{0}
-    └─❯
-
-------------------------------------------------------------------------
-
-## 🧪 Usage
-
-### 🔹 Data Types
-
-  Flag   Type      Example
-  ------ --------- ---------------------
-  `-i`   Integer   `let -i x 10`
-  `-f`   Float     `let -f y 1.5`
-  `-s`   String    `let -s name hello`
-
-------------------------------------------------------------------------
-
-### 🔹 Variables
-
-``` bash
-let -i x 10
-add -i x 5
-print -i x
-```
-
-------------------------------------------------------------------------
-
-### 🔹 Comparison Operators
-
-  Flag    Meaning
-  ------- ------------------
-  `-l`    less than
-  `-le`   less or equal
-  `-g`    greater than
-  `-ge`   greater or equal
-  `-e`    equal
-  `-ne`   not equal
-
-------------------------------------------------------------------------
-
-### 🔹 Loops
-
-``` bash
-let -i x 0
-while -i x 10 -l , add x 1 , print -i x
-```
-
-------------------------------------------------------------------------
-
-### 🔹 Command Structure
-
-``` bash
-<command> <type> <arguments>
-```
-
-Example:
-
-``` bash
-add -i x 1
-```
-
-------------------------------------------------------------------------
-
-### 🔹 Functions
-
-``` bash
-func greet
-  print hello
-end
-
-greet
-```
-
-------------------------------------------------------------------------
-
-### 🔹 Scripts
-
-``` bash
-source script.bs
-```
-
-------------------------------------------------------------------------
-
-## 🛠️ Build
-
-``` bash
-gcc commands.c main.c parser.c shell.c utils.c interpreter.c cfgfile.c -o shell
-```
-
-------------------------------------------------------------------------
-
-## ▶️ Run
-
-``` bash
-./shell
-```
-
-------------------------------------------------------------------------
-
-## 🧠 Highlights
-
--   Built from scratch in C
--   Custom tokenizer and interpreter
--   Integrated scripting language
--   Cross-platform (Windows / Unix)
-
-------------------------------------------------------------------------
-
-## 👤 Author
-
-Bruno
+``-e`` ``EQUAL``\
+``-n`` ``NOT EQUAL``\
+``-l`` ``LESS``\
+``-g`` ``GREATER``\
+``-le`` ``LESS || EQUAL``\
+``-ge`` ``GREATER || EQUAL``

@@ -1,17 +1,14 @@
+#include "cfgfile.h"
 #include "includes.h"
 #include "shell.h"
-#include "cfgfile.h"
 
-int main(int argc,char **argv)
+int
+main ()
 {
-    // load Config files
-    read_cfg("shell.cfg");
-    
-    //printf("MAXLOOP = %d\n", cfgProgram.maxloop_reach);
+  initShell ();
+  read_cfg ("shell.cfg");
 
-    // run command loop
-	sh_loop();
+  sh_loop ();
 
-    // peform shutdown / clean
-	return 0;	
+  return 0;
 }
