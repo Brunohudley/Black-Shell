@@ -330,7 +330,7 @@ fun_df (char **args)
   if (fp == NULL)
     {
       printf ("%sCannot execute the command%s", BOLDRED, RESET);
-      return 1;
+      return -1;
     }
   fgets (buffer, sizeof (buffer), fp);
 
@@ -348,7 +348,7 @@ fun_df (char **args)
     }
   pclose (fp);
 #endif // _WIN32
-  return 0;
+  return 1;
 }
 
 int
