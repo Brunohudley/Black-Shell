@@ -81,13 +81,13 @@
 ```batch
 set CC=gcc
 set SRC=cfgfile.c \
-    commands.c \
-	  globals.c \
-	  interpreter.c \
-	  main.c \
-	  parser.c \
-	  shell.c \
-	  utils.c
+    	commands.c \
+		globals.c \
+	  	interpreter.c \
+	  	main.c \
+	  	parser.c \
+	  	shell.c \
+	  	utils.c
 set FLAGS=-Wall \
 	        -Wextra \
 	        -Werror
