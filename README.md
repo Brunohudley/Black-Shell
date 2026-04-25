@@ -96,7 +96,7 @@ set NAME=Shell.exe
 ```
 
 ``run.sh``
-```
+```bash
 CC=gcc
 
 SRC="cfgfile.c \
