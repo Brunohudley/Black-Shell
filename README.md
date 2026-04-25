@@ -71,3 +71,26 @@
 ``-g`` ``GREATER``\
 ``-le`` ``LESS || EQUAL``\
 ``-ge`` ``GREATER || EQUAL``
+
+# How to run 👟
+
+> Windows :
+> in Windows you can create an batch file or Makefile
+
+```batch
+set CC=gcc
+set SRC=cfgfile.c \
+    commands.c \
+	  globals.c \
+	  interpreter.c \
+	  main.c \
+	  parser.c \
+	  shell.c \
+	  utils.c
+set FLAGS=-Wall \
+	        -Wextra \
+	        -Werror
+set NAME=Shell.exe
+
+%CC% %SRC% %FLAGS% -o %NAME%
+```
