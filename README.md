@@ -74,8 +74,7 @@
 
 # How to run 👟
 
-> Windows :\
-> in Windows you can create an batch file or Makefile
+> You can create an batch file or Makefile
 
 ``run.bat``
 ```batch
@@ -94,6 +93,26 @@ set FLAGS=-Wall \
 set NAME=Shell.exe
 
 %CC% %SRC% %FLAGS% -o %NAME%
+```
+
+``run.sh``
+```
+CC=gcc
+
+SRC="cfgfile.c \
+commands.c \
+globals.c \
+interpreter.c \
+main.c \
+parser.c \
+shell.c \
+utils.c"
+
+FLAGS="-Wall -Wextra -Werror"
+
+NAME=Shell
+
+$CC $SRC $FLAGS -o $NAME
 ```
 
 ``Makefile``
