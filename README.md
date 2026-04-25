@@ -74,7 +74,7 @@
 
 # How to run 👟
 
-> Windows :
+> Windows :\
 > in Windows you can create an batch file or Makefile
 
 ``run.bat``
