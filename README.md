@@ -77,6 +77,7 @@
 > Windows :
 > in Windows you can create an batch file or Makefile
 
+``run.bat``
 ```batch
 set CC=gcc
 set SRC=cfgfile.c \
@@ -93,4 +94,28 @@ set FLAGS=-Wall \
 set NAME=Shell.exe
 
 %CC% %SRC% %FLAGS% -o %NAME%
+```
+
+``Makefile``
+```Makefile
+CC=gcc
+SRC=cfgfile.c \
+    commands.c \
+	globals.c \
+	interpreter.c \
+	main.c \
+	parser.c \
+	shell.c \
+	utils.c
+
+FLAGS=-Wall \
+	  -Wextra \
+	  -Werror
+
+NAME=shell.exe
+
+all: main
+
+main:
+	$(CC) $(FLAGS) $(SRC) -o $(NAME)
 ```
