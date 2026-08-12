@@ -15,8 +15,8 @@
 // along with this program. If not, see <https://gnu.org>.
 // ============================================================================
 
-#include "utils.h"
-#include "shell.h"
+#include "../include/utils.h"
+#include "../include/shell.h"
 
 int
 func_win_perm (LPCSTR filepath, DWORD perms)
