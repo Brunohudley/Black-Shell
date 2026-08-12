@@ -15,12 +15,12 @@
 // along with this program. If not, see <https://gnu.org>.
 // ============================================================================
 
-#include "parser.h"
-#include "commands.h"
-#include "includes.h"
-#include "interpreter.h"
-#include "shell.h"
-#include "utils.h"
+#include "../include/parser.h"
+#include "../include/commands.h"
+#include "../include/includes.h"
+#include "../include/interpreter.h"
+#include "../include/shell.h"
+#include "../include/utils.h"
 
 #define MAX_BUFFSIZE 1024
 #define TOK_BUFFSIZE 64
