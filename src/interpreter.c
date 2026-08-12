@@ -15,12 +15,12 @@
 // along with this program. If not, see <https://gnu.org>.
 // ============================================================================
 
-#include "interpreter.h"
-#include "cfgfile.h"
-#include "includes.h"
-#include "parser.h"
-#include "shell.h"
-#include "utils.h"
+#include "../include/interpreter.h"
+#include "../include/cfgfile.h"
+#include "../include/includes.h"
+#include "../include/parser.h"
+#include "../include/shell.h"
+#include "../include/utils.h"
 
 #define LOOP_EXEC_ARG 64
 
