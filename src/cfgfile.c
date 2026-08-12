@@ -15,7 +15,7 @@
 // along with this program. If not, see <https://gnu.org>.
 // ============================================================================
 
-#include "cfgfile.h"
+#include "../include/cfgfile.h"
 
 #define READ_CFG_MAX 1024
 
