@@ -79,14 +79,14 @@
 ``run.bat``
 ```batch
 set CC=gcc
-set SRC=cfgfile.c \
-    	commands.c \
-		globals.c \
-	  	interpreter.c \
-	  	main.c \
-	  	parser.c \
-	  	shell.c \
-	  	utils.c
+set SRC=src/cfgfile.c \
+    	src/commands.c \
+		src/globals.c \
+	  	src/interpreter.c \
+	  	src/main.c \
+	  	src/parser.c \
+	  	src/shell.c \
+	  	src/utils.c
 set FLAGS=-Wall \
 	        -Wextra \
 	        -Werror
@@ -99,14 +99,14 @@ set NAME=Shell.exe
 ```bash
 CC=gcc
 
-SRC="cfgfile.c \
-commands.c \
-globals.c \
-interpreter.c \
-main.c \
-parser.c \
-shell.c \
-utils.c"
+SRC="src/cfgfile.c \
+src/commands.c \
+src/globals.c \
+src/interpreter.c \
+src/main.c \
+src/parser.c \
+src/shell.c \
+src/utils.c"
 
 FLAGS="-Wall -Wextra -Werror"
 
@@ -118,14 +118,7 @@ $CC $SRC $FLAGS -o $NAME
 ``Makefile``
 ```Makefile
 CC=gcc
-SRC=cfgfile.c \
-    commands.c \
-	globals.c \
-	interpreter.c \
-	main.c \
-	parser.c \
-	shell.c \
-	utils.c
+SRC=(wildcard src/*.c)
 
 FLAGS=-Wall \
 	  -Wextra \
