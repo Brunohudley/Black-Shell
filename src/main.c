@@ -15,9 +15,9 @@
 // along with this program. If not, see <https://gnu.org>.
 // ============================================================================
 
-#include "cfgfile.h"
-#include "includes.h"
-#include "shell.h"
+#include "../include/cfgfile.h"
+#include "../include/includes.h"
+#include "../include/shell.h"
 
 int
 main ()
