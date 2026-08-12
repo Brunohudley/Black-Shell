@@ -1,12 +1,5 @@
 CC=gcc
-SRC=cfgfile.c \
-    commands.c \
-	globals.c \
-	interpreter.c \
-	main.c \
-	parser.c \
-	shell.c \
-	utils.c
+SRC=(wildcard src/*.c)
 
 FLAGS=-Wall \
 	  -Wextra \
