@@ -15,11 +15,11 @@
 // along with this program. If not, see <https://gnu.org>.
 // ============================================================================
 
-#include "shell.h"
-#include "cfgfile.h"
-#include "includes.h"
-#include "parser.h"
-#include "pcolors.h"
+#include "../include/shell.h"
+#include "../include/cfgfile.h"
+#include "../include/includes.h"
+#include "../include/parser.h"
+#include "../include/pcolors.h"
 
 void
 setup_prompt ()
