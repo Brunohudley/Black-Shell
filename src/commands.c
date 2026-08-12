@@ -15,11 +15,11 @@
 // along with this program. If not, see <https://gnu.org>.
 // ============================================================================
 
-#include "commands.h"
-#include "cfgfile.h"
-#include "includes.h"
-#include "parser.h"
-#include "utils.h"
+#include "../include/commands.h"
+#include "../include/cfgfile.h"
+#include "../include/includes.h"
+#include "../include/parser.h"
+#include "../include/utils.h"
 
 static t_cmd_help cmds_help[] = {
   { "cd", "change dir" },
