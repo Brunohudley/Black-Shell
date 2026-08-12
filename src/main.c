@@ -23,7 +23,7 @@ int
 main ()
 {
   initShell ();
-  read_cfg ("shell.cfg");
+  read_cfg ("../shell.cfg");
 
   sh_loop ();
 
