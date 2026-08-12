@@ -15,9 +15,9 @@
 // along with this program. If not, see <https://gnu.org>.
 // ============================================================================
 
-#include "cfgfile.h"
-#include "commands.h"
-#include "shell.h"
+#include "../include/cfgfile.h"
+#include "../include/commands.h"
+#include "../include/shell.h"
 
 #ifdef _WIN32
 char *(*pcwd) (char *, int) = _getcwd;
