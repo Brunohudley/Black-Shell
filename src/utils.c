@@ -324,12 +324,17 @@ fun_df (char **args)
       unsigned long long used_space
           = total_space.QuadPart - free_space.QuadPart;
 
+      unsigned long long free_kb = free_space.QuadPart / 1024;
+      unsigned long long available_space_kb = available_space.QuadPart / 1024;
+      unsigned long long total_kb = total_space.QuadPart / 1024;
+      unsigned long long used_kb = used_space / 1024;
+
       int percent_used
           = ((double)used_space / (double)total_space.QuadPart) * 100.0;
       printf ("Disk usage:\n");
-      printf ("    Total Space: %llu KB\n", total_space.QuadPart);
-      printf ("    Available Space: %llu KB\n", available_space.QuadPart);
-      printf ("    Used Space : %llu KB %d%%\n", used_space, percent_used);
+      printf ("    Total Space: %llu KB\n", total_kb);
+      printf ("    Available Space: %llu KB\n", available_space_kb);
+      printf ("    Used Space : %llu KB %d%%\n", used_kb, percent_used);
     }
   else
     {
@@ -359,7 +364,7 @@ fun_df (char **args)
         {
           printf ("Filesystem: %s, Mounted_on : %s\n", filesystem, mounted_on);
           printf ("    Total Size: %ld KB\n", total_space);
-          printf ("    Available Space: KB\n", avaliable_space);
+          printf ("    Available Space: %ld KB\n", avaliable_space);
           printf ("    Used Space: %d KB %d%%\n", used_space, percent_used);
         }
     }
