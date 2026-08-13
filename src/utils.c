@@ -324,7 +324,6 @@ fun_df (char **args)
       unsigned long long used_space
           = total_space.QuadPart - free_space.QuadPart;
 
-      unsigned long long free_kb = free_space.QuadPart / 1024;
       unsigned long long available_space_kb = available_space.QuadPart / 1024;
       unsigned long long total_kb = total_space.QuadPart / 1024;
       unsigned long long used_kb = used_space / 1024;
