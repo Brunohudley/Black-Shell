@@ -804,26 +804,26 @@ int
 sh_while (char **args)
 {
   if (!args[1] || !args[2] || !args[3] || !args[4])
+  {
     return error_set ("USAGE: while -t a b -cond , cmds\n");
+  }
+  
+  int i = 1;
+  while (args[i] && strcmp (args[i], ",") != 0) i++;
 
-  int i;
-
-  for (i = 1; args[i] && strcmp (args[i], ",") != 0; i++)
-
-    if (!args[i])
-      {
-        return error_set ("WHILE: missing ','\n");
-      }
-
-  args[i] = NULL;
+  if (!args[i]) 
+  { 
+    return error_set ("WHILE: missing ','\n"); 
+  }
 
   char **expr = &args[1];
   char **cmds = &args[i + 1];
 
   if (!cmds[0])
-    {
-      return error_set ("WHILE: missing commands\n");
-    }
+  {
+    return error_set ("WHILE: missing commands\n");
+  }
+  
   size_t loopcx = 0;
 
   while (1)
@@ -836,26 +836,26 @@ sh_while (char **args)
         }
 
       int cond = get_cmp_type (expr[3]);
+
       if (cond == 999)
-        {
-          return error_set ("WHILE: invalid condition\n");
-        }
+        return error_set ("WHILE: invalid condition\n");
 
       char *cmp_args[5];
+
       cmp_args[0] = "cmp";
       cmp_args[1] = expr[0];
       cmp_args[2] = expr[1];
       cmp_args[3] = expr[2];
       cmp_args[4] = NULL;
 
-      cmp_var (cmp_args);
+      if (!cmp_var (cmp_args))
+        return 0;
 
       if (!check_cmp_flag (cond))
-        {
-          break;
-        }
+        break;
 
-      loop_exec (cmds);
+      if (!loop_exec (cmds))
+        return 0;
     }
 
   return 1;
