@@ -1,5 +1,5 @@
 CC=gcc
-SRC=(wildcard src/*.c)
+SRC=$(wildcard src/*.c)
 
 FLAGS=-Wall \
 	  -Wextra \
