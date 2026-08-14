@@ -751,31 +751,35 @@ end of one command and allow you to use another command.
 int
 loop_exec (char **args)
 {
-
   for (int i = 0; args[i];)
     {
       int buffsize = LOOP_EXEC_ARG;
       int pos = 0;
 
       char **cmd = malloc (sizeof (char *) * buffsize);
+
       if (!cmd)
         {
           printf ("ALLOC ERROR\n");
-          exit (1);
+          return 0;
         }
 
-      for (; args[i] && strcmp (args[i], ",") != 0;)
+      while (args[i] && strcmp (args[i], ",") != 0)
         {
           if (pos >= buffsize - 1)
             {
               buffsize *= 2;
-              char **tmp = realloc (cmd, sizeof (char *) * buffsize);
+
+              char **tmp =
+                  realloc (cmd, sizeof (char *) * buffsize);
+
               if (!tmp)
                 {
                   free (cmd);
                   printf ("REALLOC ERROR\n");
-                  exit (1);
+                  return 0;
                 }
+
               cmd = tmp;
             }
 
@@ -786,15 +790,19 @@ loop_exec (char **args)
 
       if (pos > 0)
         {
-          sh_execute (cmd);
+          int result = sh_execute (cmd);
+
+          free (cmd);
+
+          if (!result)
+            return 0;
         }
-
-      free (cmd);
-
-      if (args[i] && strcmp (args[i], ",") == 0)
+      else
         {
-          i++;
+          free (cmd);
         }
+
+      if (args[i] && strcmp (args[i], ",") == 0) i++;
     }
 
   return 1;
