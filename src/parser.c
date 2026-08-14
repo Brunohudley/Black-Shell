@@ -158,11 +158,12 @@ sh_execute (char **args)
   return ret;
 }
 
-char *builtin_str[]
-    = { "head",  "cd",    "whoami", "rm",     "rmdir", "name", "chown",
-        "clear", "pwd",   "mk",     "mkdir",  "copy",  "ls",   "chmod",
-        "uname", "print", "let",    "add",    "sub",   "div",  "mul",
-        "do",    "while", "help",   "source", "cmp",   "df",   "exit" };
+int (*builtin_func[]) (char **args)
+  = { &sh_head,   &sh_cd,    &sh_whoami, &sh_rm,    &sh_dirrm, &sh_name,
+        &sh_chown,  &sh_cls,   &sh_pwd,    &nw_file,  &nw_dir,   &sh_copy,
+        &sh_ls,     &sh_chmod, &sh_uname,  &sh_print, &let_var,  &add_var,
+        &sub_var,   &div_var,  &mul_var,   &cmd_do,   &sh_while, &sh_help,
+        &sh_source, &cmp_var,  &fun_df,    &sh_exit };
 
 int (*builtin_func[]) (char **args)
     = { &sh_head,   &sh_cd,    &sh_whoami, &sh_rm,    &sh_dirrm, &sh_name,
