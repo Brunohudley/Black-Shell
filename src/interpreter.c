@@ -55,16 +55,19 @@ get_var (const char *name, const char *expr)
             {
               return &shell.var[i].data.int_value;
             }
+
           if (strcmp (expr, "-f") == 0)
             {
               return &shell.var[i].data.flt_value;
             }
+
           if (strcmp (expr, "-s") == 0)
             {
               return &shell.var[i].data.str_value;
             }
         }
     }
+
   return NULL;
 }
 
@@ -101,17 +104,20 @@ set_var (const char *expr, const char *name, void *value)
               int ivalue = *(int *)value;
               shell.var[i].data.int_value = ivalue;
             }
+
           if (strcmp (expr, "-f") == 0)
             {
               float fvalue = *(float *)value;
               shell.var[i].data.flt_value = fvalue;
             }
+
           if (strcmp (expr, "-s") == 0)
             {
               char *svalue = (char *)value;
               strncpy (shell.var[i].data.str_value, svalue,
                        sizeof (shell.var[i].data.str_value));
             }
+
           return;
         }
     }
@@ -124,6 +130,7 @@ set_var (const char *expr, const char *name, void *value)
 
   strncpy (shell.var[shell.var_count].name, name,
            sizeof (shell.var[shell.var_count].name) - 1);
+
   shell.var[shell.var_count]
       .name[sizeof (shell.var[shell.var_count].name) - 1] = '\0';
 
@@ -131,12 +138,10 @@ set_var (const char *expr, const char *name, void *value)
     {
       shell.var[shell.var_count].data.int_value = *(int *)value;
     }
-
   else if (strcmp (expr, "-f") == 0)
     {
       shell.var[shell.var_count].data.flt_value = *(float *)value;
     }
-
   else if (strcmp (expr, "-s") == 0)
     {
       strncpy (shell.var[shell.var_count].data.str_value, (char *)value,
@@ -208,11 +213,13 @@ sh_print (char **args)
     {
       for (int i = 1; args[i]; i++)
         printf ("%s ", args[i]);
+
       printf ("\n");
       return 1;
     }
 
   void *res1 = get_var (args[2], args[1]);
+
   if (!res1)
     {
       return error_set ("PRINT: var not found\n");
@@ -222,12 +229,10 @@ sh_print (char **args)
     {
       printf ("%d\n", *(int *)res1);
     }
-
   else if (strcmp (args[1], "-f") == 0)
     {
       printf ("%f\n", *(float *)res1);
     }
-
   else if (strcmp (args[1], "-s") == 0)
     {
       printf ("%s\n", (char *)res1);
@@ -458,10 +463,8 @@ mul_var (char **args)
 /*
 ==========
 
-get_cmp_type
-                        arguments:
+get_cmp_type	arguments:
                         EXPR
-
 
                         details:
                         EXPR "-e"	| CMP_EQUAL
@@ -488,22 +491,27 @@ get_cmp_type (char *expr)
     {
       return CMP_EQUAL;
     }
+
   if (strcmp (expr, "-g") == 0)
     {
       return CMP_GREATER;
     }
+
   if (strcmp (expr, "-l") == 0)
     {
       return CMP_LESS;
     }
+
   if (strcmp (expr, "-n") == 0)
     {
       return CMP_NEQUAL;
     }
+
   if (strcmp (expr, "-ge") == 0)
     {
       return CMP_GEQUAL;
     }
+
   if (strcmp (expr, "-le") == 0)
     {
       return CMP_LEQUAL;
@@ -515,10 +523,8 @@ get_cmp_type (char *expr)
 /*
 ==========
 
-get_cmp_type
-                        arguments:
+get_cmp_type	arguments:
                         EXPR
-
 
                         details:
                         type 		| CMP_EQUAL
@@ -572,11 +578,10 @@ cmp_var
                         details:
                         CMP_LESS	| -1
                         CMP_EQUAL	|  0
-                        CMP_GREATER |  1
-                        CMP_NEQUAL  |  2
-                        CMP_GEQUAL  |  3
-                        CMP_LEQUAL  |  4
-
+                        CMP_GREATER | 1
+                        CMP_NEQUAL  | 2
+                        CMP_GEQUAL  | 3
+                        CMP_LEQUAL  | 4
 
                         description:
 
@@ -592,6 +597,7 @@ cmp_var (char **args)
     {
       return error_set ("USAGE: <CMP> EXPR ARG ARG!\n");
     }
+
   char *type = args[1];
 
   void *res1 = get_var (args[2], type);
@@ -620,7 +626,6 @@ cmp_var (char **args)
           shell.cmp_flag = CMP_LESS;
         }
     }
-
   else if (strcmp (type, "-f") == 0)
     {
       float a = *(float *)res1;
@@ -639,7 +644,6 @@ cmp_var (char **args)
           shell.cmp_flag = CMP_LESS;
         }
     }
-
   else if (strcmp (type, "-s") == 0)
     {
       char *a = (char *)res1;
@@ -674,13 +678,12 @@ cmp_do
                         details:
                         CMP_LESS	| -1
                         CMP_EQUAL	|  0
-                        CMP_GREATER |  1
-                        CMP_NEQUAL  |  2
-                        CMP_GEQUAL  |  3
-                        CMP_LEQUAL  |  4
+                        CMP_GREATER | 1
+                        CMP_NEQUAL  | 2
+                        CMP_GEQUAL  | 3
+                        CMP_LEQUAL  | 4
 
                         INVALID		| 999
-
 
                         description:
 
@@ -761,23 +764,22 @@ loop_exec (char **args)
       if (!cmd)
         {
           printf ("ALLOC ERROR\n");
-          return 0;
+          exit (1);
         }
 
-      while (args[i] && strcmp (args[i], ",") != 0)
+      for (; args[i] && strcmp (args[i], ",") != 0;)
         {
           if (pos >= buffsize - 1)
             {
               buffsize *= 2;
 
-              char **tmp =
-                  realloc (cmd, sizeof (char *) * buffsize);
+              char **tmp = realloc (cmd, sizeof (char *) * buffsize);
 
               if (!tmp)
                 {
                   free (cmd);
                   printf ("REALLOC ERROR\n");
-                  return 0;
+                  exit (1);
                 }
 
               cmd = tmp;
@@ -790,19 +792,15 @@ loop_exec (char **args)
 
       if (pos > 0)
         {
-          int result = sh_execute (cmd);
-
-          free (cmd);
-
-          if (!result)
-            return 0;
+          sh_execute (cmd);
         }
-      else
+
+      free (cmd);
+
+      if (args[i] && strcmp (args[i], ",") == 0)
         {
-          free (cmd);
+          i++;
         }
-
-      if (args[i] && strcmp (args[i], ",") == 0) i++;
     }
 
   return 1;
@@ -812,26 +810,26 @@ int
 sh_while (char **args)
 {
   if (!args[1] || !args[2] || !args[3] || !args[4])
-  {
     return error_set ("USAGE: while -t a b -cond , cmds\n");
-  }
-  
-  int i = 1;
-  while (args[i] && strcmp (args[i], ",") != 0) i++;
 
-  if (!args[i]) 
-  { 
-    return error_set ("WHILE: missing ','\n"); 
-  }
+  int i;
+
+  for (i = 1; args[i] && strcmp (args[i], ",") != 0; i++)
+    if (!args[i])
+      {
+        return error_set ("WHILE: missing ','\n");
+      }
+
+  args[i] = NULL;
 
   char **expr = &args[1];
   char **cmds = &args[i + 1];
 
   if (!cmds[0])
-  {
-    return error_set ("WHILE: missing commands\n");
-  }
-  
+    {
+      return error_set ("WHILE: missing commands\n");
+    }
+
   size_t loopcx = 0;
 
   while (1)
@@ -846,7 +844,9 @@ sh_while (char **args)
       int cond = get_cmp_type (expr[3]);
 
       if (cond == 999)
-        return error_set ("WHILE: invalid condition\n");
+        {
+          return error_set ("WHILE: invalid condition\n");
+        }
 
       char *cmp_args[5];
 
@@ -856,14 +856,14 @@ sh_while (char **args)
       cmp_args[3] = expr[2];
       cmp_args[4] = NULL;
 
-      if (!cmp_var (cmp_args))
-        return 0;
+      cmp_var (cmp_args);
 
       if (!check_cmp_flag (cond))
-        break;
+        {
+          break;
+        }
 
-      if (!loop_exec (cmds))
-        return 0;
+      loop_exec (cmds);
     }
 
   return 1;
